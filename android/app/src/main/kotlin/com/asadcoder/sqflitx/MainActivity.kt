@@ -1,0 +1,5 @@
+package com.asadcoder.sqflitx
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
