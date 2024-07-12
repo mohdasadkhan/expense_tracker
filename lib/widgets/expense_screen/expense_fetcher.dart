@@ -5,45 +5,40 @@ import '../../providers/database_provider.dart';
 import './expense_list.dart';
 import './expense_chart.dart';
 
-class ExpenseFetcher extends StatefulWidget {
+class ExpenseFetcher extends StatelessWidget {
   final String category;
-  const ExpenseFetcher(this.category, {super.key});
 
-  @override
-  State<ExpenseFetcher> createState() => _ExpenseFetcherState();
-}
+  const ExpenseFetcher({super.key, required this.category});
 
-class _ExpenseFetcherState extends State<ExpenseFetcher> {
-  late Future _expenseList;
-  Future _getExpenseList() async {
+  Future _getExpenseList(context) async {
     final provider = Provider.of<DatabaseProvider>(context, listen: false);
-    return await provider.fetchExpenses(widget.category);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _expenseList = _getExpenseList();
+    return await provider.fetchExpenses(category);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _expenseList,
+      future: _getExpenseList(context),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
             return Center(child: Text(snapshot.error.toString()));
           } else {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            return SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   SizedBox(
                     height: 250.0,
-                    child: ExpenseChart(widget.category),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: ExpenseChart(category),
+                    ),
                   ),
-                  const Expanded(child: ExpenseList()),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const ExpenseList(),
                 ],
               ),
             );

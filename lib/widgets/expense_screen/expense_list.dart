@@ -12,9 +12,12 @@ class ExpenseList extends StatelessWidget {
       builder: (_, db, __) {
         var exList = db.expenses;
         return exList.isNotEmpty
-            ? ListView.builder(
-                itemCount: exList.length,
-                itemBuilder: (_, i) => ExpenseCard(exList[i]))
+            ? Column(
+                children: List.generate(
+                  exList.length,
+                  (i) => ExpenseCard(exList[i]),
+                ),
+              )
             : const Center(
                 child: Text('No Expenses Added'),
               );

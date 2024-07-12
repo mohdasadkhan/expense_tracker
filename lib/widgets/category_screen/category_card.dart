@@ -16,14 +16,31 @@ class CategoryCard extends StatelessWidget {
           arguments: category.title,
         );
       },
-      leading: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Icon(category.icon),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      leading: CircleAvatar(
+        backgroundColor: Theme.of(context).primaryColorLight,
+        child: Icon(category.icon, color: Colors.white),
       ),
-      title: Text(category.title),
-      subtitle: Text('entries: ${category.entries}'),
-      trailing: Text(NumberFormat.currency(locale: 'en_IN', symbol: '₹')
-          .format(category.totalAmount)),
+      title: Text(
+        category.title,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18.0,
+        ),
+      ),
+      subtitle: Text(
+        'entries: ${category.entries}',
+        style: TextStyle(color: Colors.grey[600]),
+      ),
+      trailing: Text(
+        NumberFormat.currency(locale: 'en_IN', symbol: '₹')
+            .format(category.totalAmount),
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16.0,
+          color: Colors.green,
+        ),
+      ),
     );
   }
 }

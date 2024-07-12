@@ -13,12 +13,20 @@ class _ExpenseSearchState extends State<ExpenseSearch> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DatabaseProvider>(context, listen: false);
-    return TextField(
-      onChanged: (value) {
-        provider.searchText = value;
-      },
-      decoration: const InputDecoration(
-        labelText: 'Search Expenses',
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        autofocus: true,
+        onChanged: (value) {
+          provider.searchText = value;
+        },
+        decoration: InputDecoration(
+          labelText: 'Search Expenses',
+          prefixIcon: const Icon(Icons.search),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
       ),
     );
   }

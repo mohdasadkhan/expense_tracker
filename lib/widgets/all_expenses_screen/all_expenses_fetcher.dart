@@ -12,36 +12,28 @@ class AllExpensesFetcher extends StatefulWidget {
 }
 
 class _AllExpensesFetcherState extends State<AllExpensesFetcher> {
-  late Future _allExpensesList;
-
   Future _getAllExpenses() async {
     final provider = Provider.of<DatabaseProvider>(context, listen: false);
     return await provider.fetchAllExpenses();
   }
 
   @override
-  void initState() {
-    super.initState();
-    _allExpensesList = _getAllExpenses();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _allExpensesList,
+      future: _getAllExpenses(),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
             return Center(child: Text(snapshot.error.toString()));
           } else {
-            return const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                children: [
-                  ExpenseSearch(),
-                  Expanded(child: AllExpensesList()),
-                ],
-              ),
+            return const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: ExpenseSearch(),
+                ),
+                Expanded(child: AllExpensesList()),
+              ],
             );
           }
         } else {
