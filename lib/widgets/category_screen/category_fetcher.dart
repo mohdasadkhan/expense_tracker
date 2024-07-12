@@ -46,38 +46,33 @@ class CategoryFetcher extends StatelessWidget {
                                 fontSize: 18.0,
                               ),
                             ),
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pushNamed(AllExpenses.name);
-                                  },
-                                  style: TextButton.styleFrom(
-                                    foregroundColor:
-                                        Theme.of(context).primaryColor,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16.0,
-                                        vertical: 8.0), // Use theme color
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'View All',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 5.0),
-                                      const Icon(Icons.arrow_forward_ios,
-                                          size: 16.0),
-                                    ],
-                                  ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed(AllExpenses.name);
+                              },
+                              style: TextButton.styleFrom(
+                                foregroundColor: Theme.of(context).primaryColor,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                  vertical: 8.0,
                                 ),
-                              ],
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'View All',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5.0),
+                                  const Icon(Icons.arrow_forward_ios,
+                                      size: 16.0),
+                                ],
+                              ),
                             )
                           ],
                         ),
