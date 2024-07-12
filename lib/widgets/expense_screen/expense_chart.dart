@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
-import '../../models/database_provider.dart';
+import '../../providers/database_provider.dart';
 
 class ExpenseChart extends StatefulWidget {
   final String category;

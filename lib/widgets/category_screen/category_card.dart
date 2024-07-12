@@ -13,7 +13,7 @@ class CategoryCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           ExpenseScreen.name,
-          arguments: category.title, // for expensescreen.
+          arguments: category.title,
         );
       },
       leading: Padding(

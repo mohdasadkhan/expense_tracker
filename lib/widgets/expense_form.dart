@@ -2,8 +2,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:sqflitx/services/notification_services/notification_controller.dart';
-import '../models/database_provider.dart';
+import 'package:sqflitx/controllers/notification_controller.dart';
+import '../providers/database_provider.dart';
 import '../constants/icons.dart';
 import '../models/expense.dart';
 
@@ -51,14 +51,12 @@ class _ExpenseFormState extends State<ExpenseForm> {
   //
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<DatabaseProvider>(context, listen: false);
     return Container(
       height: MediaQuery.of(context).size.height * 0.7,
       padding: const EdgeInsets.all(20.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // title
             TextField(
               controller: _title,
               decoration: const InputDecoration(
@@ -66,7 +64,6 @@ class _ExpenseFormState extends State<ExpenseForm> {
               ),
             ),
             const SizedBox(height: 20.0),
-            // amount
             TextField(
               controller: _amount,
               keyboardType: TextInputType.number,
@@ -75,7 +72,6 @@ class _ExpenseFormState extends State<ExpenseForm> {
               ),
             ),
             const SizedBox(height: 20.0),
-            // date picker
             Row(
               children: [
                 Expanded(
@@ -90,7 +86,6 @@ class _ExpenseFormState extends State<ExpenseForm> {
               ],
             ),
             const SizedBox(height: 20.0),
-            // category
             Row(
               children: [
                 const Expanded(child: Text('Category')),
@@ -118,7 +113,6 @@ class _ExpenseFormState extends State<ExpenseForm> {
             ElevatedButton.icon(
               onPressed: () {
                 if (_title.text != '' && _amount.text != '') {
-                  // create an expense
                   final file = Expense(
                     id: 0,
                     title: _title.text,
@@ -126,16 +120,15 @@ class _ExpenseFormState extends State<ExpenseForm> {
                     date: _date != null ? _date! : DateTime.now(),
                     category: _initialValue,
                   );
-                  // add it to database.
-                  provider.addExpense(file);
-                  // close the bottomsheet
+                  Provider.of<DatabaseProvider>(context, listen: false)
+                      .addExpense(file);
                   AwesomeNotifications().createNotification(
                     content: NotificationContent(
-                      id: 1,
-                      channelKey: 'expense_tracker_key',
-                      title: 'Expense Added',
-                      body: 'This is test notification and Its working properly'
-                    ),
+                        id: 1,
+                        channelKey: 'expense_tracker_key',
+                        title: 'Expense Added',
+                        body:
+                            'This is test notification and Its working properly'),
                   );
                   Navigator.of(context).pop();
                 }

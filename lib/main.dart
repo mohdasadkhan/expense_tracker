@@ -1,8 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './models/database_provider.dart';
-// screens
+import 'providers/database_provider.dart';
 import './screens/category_screen.dart';
 import './screens/expense_screen.dart';
 import './screens/all_expenses.dart';
