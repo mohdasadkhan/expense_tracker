@@ -52,7 +52,8 @@ class CategoryFetcher extends StatelessWidget {
                                     .pushNamed(AllExpenses.name);
                               },
                               style: TextButton.styleFrom(
-                                foregroundColor: Theme.of(context).primaryColor,
+                                foregroundColor:
+                                    Theme.of(context).primaryColor,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 16.0,
                                   vertical: 8.0,

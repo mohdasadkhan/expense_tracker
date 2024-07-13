@@ -2,7 +2,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:sqflitx/controllers/notification_controller.dart';
+import 'package:sqflitx/domain/controllers/notification_controller.dart';
 import 'package:sqflitx/data/database_provider.dart';
 import '../../../../constants/icons.dart';
 import '../../../../domain/models/expense.dart';
@@ -117,7 +117,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 onTap: () => _showDatePicker(context),
                 decoration: InputDecoration(
                   icon: const Icon(Icons.calendar_today_rounded),
-                  labelText: 'DueDate',
+                  labelText: 'Date',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -175,7 +175,8 @@ class _ExpenseFormState extends State<ExpenseForm> {
               date: _selectedDate!,
               category: _initialValue,
             );
-            Provider.of<DatabaseProvider>(context, listen: false).addExpense(file);
+            Provider.of<DatabaseProvider>(context, listen: false)
+                .addExpense(file);
             AwesomeNotifications().createNotification(
               content: NotificationContent(
                 id: 1,

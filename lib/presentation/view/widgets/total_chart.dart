@@ -15,7 +15,6 @@ class TotalChart extends StatelessWidget {
         var total = db.calculateTotalExpenses();
 
         return Container(
-          // margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
@@ -101,12 +100,12 @@ class TotalChart extends StatelessWidget {
                                 .toList()
                             : [
                                 PieChartSectionData(
-                                  color: Colors.grey,
+                                  color: Colors.transparent,
                                   value: 1,
                                   title: 'No expenses',
-                                  radius: 80.0,
+                                  radius: 20.0,
                                   titleStyle: const TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 0,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),

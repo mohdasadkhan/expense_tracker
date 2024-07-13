@@ -14,7 +14,7 @@ class DatabaseProvider with ChangeNotifier {
   }
 
   List<ExpenseCategory> _categories = [];
-  
+
   List<ExpenseCategory> get categories => _categories;
 
   List<Expense> _expenses = [];
@@ -44,6 +44,11 @@ class DatabaseProvider with ChangeNotifier {
 
   static const cTable = 'categoryTable';
   static const eTable = 'expenseTable';
+  static const _columnId = 'id';
+  static const _title = 'title';
+  static const _amount = 'amount';
+  static const _date = 'date';
+  static const _category = 'category';
   Future<void> _createDb(Database db, int version) async {
     await db.transaction((txn) async {
       await txn.execute('''CREATE TABLE $cTable(
@@ -52,11 +57,11 @@ class DatabaseProvider with ChangeNotifier {
         totalAmount TEXT
       )''');
       await txn.execute('''CREATE TABLE $eTable(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT,
-        amount TEXT,
-        date TEXT,
-        category TEXT
+        $_columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+        $_title TEXT,
+        $_amount TEXT,
+        $_date TEXT,
+        $_category TEXT
       )''');
 
       for (int i = 0; i < icons.length; i++) {
@@ -109,7 +114,7 @@ class DatabaseProvider with ChangeNotifier {
     });
   }
 
- Future<void> addExpense(Expense exp) async {
+  Future<void> addExpense(Expense exp) async {
     final db = await database;
     await db.transaction((txn) async {
       await txn
@@ -137,7 +142,6 @@ class DatabaseProvider with ChangeNotifier {
       });
     });
   }
-
 
   Future<void> deleteExpense(int expId, String category, double amount) async {
     final db = await database;

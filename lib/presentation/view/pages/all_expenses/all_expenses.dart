@@ -34,7 +34,7 @@ class AllExpenses extends StatelessWidget {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return const Expanded(child: AllExpensesList());
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Text("Loading..");
                 }
               },
             )

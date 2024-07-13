@@ -14,7 +14,6 @@ class ExpenseChart extends StatelessWidget {
       var maxY = db.calculateEntriesAndAmount(category)['totalAmount'];
       var list = db.calculateWeekExpenses().reversed.toList();
 
-      print('List not empty ${list.isNotEmpty}, list length ${list.length}');
       return maxY > 1
           ? Container(
               margin: const EdgeInsets.only(top: 10),
