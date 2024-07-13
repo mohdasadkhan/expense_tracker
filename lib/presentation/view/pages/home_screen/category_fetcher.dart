@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../providers/database_provider.dart';
-import './total_chart.dart';
-import './category_list.dart';
-import '../../screens/all_expenses.dart';
+import 'package:sqflitx/data/database_provider.dart';
+import '../../widgets/total_chart.dart';
+import 'category_list.dart';
+import '../all_expenses/all_expenses.dart';
 
 class CategoryFetcher extends StatelessWidget {
   const CategoryFetcher({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../models/expense.dart';
-import '../../constants/icons.dart';
-import './confirm_box.dart';
+import '../../../domain/models/expense.dart';
+import '../../../constants/icons.dart';
+import 'confirm_box.dart';
 
 class ExpenseCard extends StatelessWidget {
   final Expense exp;

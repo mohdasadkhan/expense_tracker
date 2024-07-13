@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../providers/database_provider.dart';
-import '../expense_screen/expense_card.dart';
+import 'package:sqflitx/data/database_provider.dart';
+import '../../widgets/expense_card.dart';
 
 class AllExpensesList extends StatelessWidget {
   const AllExpensesList({super.key});

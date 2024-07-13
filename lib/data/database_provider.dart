@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import '../constants/icons.dart';
-import '../models/ex_category.dart';
-import '../models/expense.dart';
+import '../domain/models/ex_category.dart';
+import '../domain/models/expense.dart';
 
 class DatabaseProvider with ChangeNotifier {
   String _searchText = '';
@@ -14,6 +14,7 @@ class DatabaseProvider with ChangeNotifier {
   }
 
   List<ExpenseCategory> _categories = [];
+  
   List<ExpenseCategory> get categories => _categories;
 
   List<Expense> _expenses = [];
@@ -108,7 +109,7 @@ class DatabaseProvider with ChangeNotifier {
     });
   }
 
-  Future<void> addExpense(Expense exp) async {
+ Future<void> addExpense(Expense exp) async {
     final db = await database;
     await db.transaction((txn) async {
       await txn
@@ -136,6 +137,7 @@ class DatabaseProvider with ChangeNotifier {
       });
     });
   }
+
 
   Future<void> deleteExpense(int expId, String category, double amount) async {
     final db = await database;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/category_screen/category_fetcher.dart';
-import '../widgets/expense_form.dart';
+import 'category_fetcher.dart';
+import '../add_expenses/expense_form.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -18,13 +18,11 @@ class CategoryScreen extends StatelessWidget {
       body: const CategoryFetcher(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColorLight,
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            builder: (_) => const ExpenseForm(),
-          );
-        },
+        onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const ExpenseForm(),
+            )),
         child: const Icon(Icons.add),
       ),
     );

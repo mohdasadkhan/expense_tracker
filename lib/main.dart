@@ -1,10 +1,10 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'providers/database_provider.dart';
-import './screens/category_screen.dart';
-import './screens/expense_screen.dart';
-import './screens/all_expenses.dart';
+import 'package:sqflitx/data/database_provider.dart';
+import 'presentation/view/pages/home_screen/category_screen.dart';
+import 'presentation/view/pages/view_expenses_screen/expense_screen.dart';
+import 'presentation/view/pages/all_expenses/all_expenses.dart';
 
 void main() async {
   await AwesomeNotifications().initialize(null, [
@@ -24,10 +24,12 @@ void main() async {
   if (!isAllowedNotification) {
     AwesomeNotifications().requestPermissionToSendNotifications();
   }
-  runApp(ChangeNotifierProvider(
-    create: (_) => DatabaseProvider(),
-    child: const MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => DatabaseProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

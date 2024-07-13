@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../models/ex_category.dart';
-import '../../screens/expense_screen.dart';
+import 'package:sqflitx/domain/models/ex_category.dart';
 
 class CategoryCard extends StatelessWidget {
   final ExpenseCategory category;
-  const CategoryCard(this.category, {super.key});
+  final VoidCallback onTap;
+  const CategoryCard(this.category, {super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {
-        Navigator.of(context).pushNamed(
-          ExpenseScreen.name,
-          arguments: category.title,
-        );
-      },
+      onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).primaryColorLight,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../providers/database_provider.dart';
+import 'package:sqflitx/data/database_provider.dart';
 
 class TotalChart extends StatelessWidget {
   const TotalChart({super.key});

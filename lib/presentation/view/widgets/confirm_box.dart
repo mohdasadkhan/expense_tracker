@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../providers/database_provider.dart';
-import '../../models/expense.dart';
+import 'package:sqflitx/data/database_provider.dart';
+import '../../../domain/models/expense.dart';
 
 class ConfirmBox extends StatelessWidget {
   const ConfirmBox({
@@ -13,7 +13,8 @@ class ConfirmBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<DatabaseProvider>(context, listen: false);
+    final provider =
+        Provider.of<DatabaseProvider>(context, listen: false);
     return AlertDialog(
       contentPadding: const EdgeInsets.all(10),
       title: Text(
